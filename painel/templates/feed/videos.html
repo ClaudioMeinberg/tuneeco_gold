@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% load painel_tags %}
+{% block title %} tuneeco Gold {% endblock %}
+{% block page-title %}  Feed de Vídeos - Terra {% endblock %}
+{% block panel-header %}Feed de Vídeos - Terra{% endblock %}
+{% block content %}
+<style>
+  .clicable-row{
+    cursor: pointer;
+
+  }
+  .clicable-row:hover {
+    background-color: #eeeeee;
+  }
+</style>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <a class="btn btn-primary float-right" href="{% url 'video_add' %}" role="button">
+              Nova Produção</a>
+
+            <h4 class="card-title"> Em Produção</h4>
+
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              {% if videos_em_producao %}
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Feed
+                  </th>
+                  <th>
+                    Título
+                  </th>
+                  <th>
+                    Categoria
+                  </th>
+                  <th>
+                    Publicação
+                  </th>
+                  <th>
+                    Status
+                  </th>
+                </thead>
+                <tbody>
+                {% for video in videos_em_producao %}
+                  <tr class="clicable-row" onclick="window.location='{% url 'video_edit' video.pk %}';">
+                    <td>{{ video.feed }}</td>
+                    <td>{{ video.title }}</td>
+                    <td>{{ video.categories.last }}</td>
+                    <td>{{ video.published|default_if_none:"-" }}</td>
+                    <td>
+                      {{ video.status | video_status_badge }}
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+              <p class="text-center">Não há itens em produção</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% if videos_processando %}
+      <div class="col-md-12">
+        <div class="card card-plain">
+          <div class="card-header">
+            <h4 class="card-title"> Em processamento</h4>
+            <p class="category"> Processando vídeos dos itens aprovados</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Feed
+                  </th>
+                  <th>
+                    Título
+                  </th>
+                  <th>
+                    Categoria
+                  </th>
+                  <th>
+                    Publicação
+                  </th>
+                  <th>
+                    Status
+                  </th>
+                </thead>
+                <tbody>
+                {% for video in videos_processando %}
+                  <tr>
+                    <td>{{ video.feed }}</td>
+                    <td>{{ video.title }}</td>
+                    <td>{{ video.categories.last }}</td>
+                    <td>{{ video.published }}</td>
+                    <td>
+                      <span class="badge badge-pill badge-warning">PROCESSANDO</span>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="col-md-12">
+        <div class="card card-plain">
+          <div class="card-header">
+            <h4 class="card-title"> Agendados</h4>
+            <p class="category"> Itens aprovados, mas com data de publicação superior a data de hoje</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              {% if videos_agendados %}
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Feed
+                  </th>
+                  <th>
+                    Título
+                  </th>
+                  <th>
+                    Categoria
+                  </th>
+                  <th>
+                    Publicação
+                  </th>
+                  <th>
+                    Status
+                  </th>
+                </thead>
+                <tbody>
+                {% for video in videos_agendados %}
+                  <tr class="clicable-row" onclick="window.location='{% url 'video_edit' video.pk %}';">
+                    <td>{{ video.feed }}</td>
+                    <td>{{ video.title }}</td>
+                    <td>{{ video.categories.last }}</td>
+                    <td>{{ video.published }}</td>
+                    <td>
+                      <span class="badge badge-pill badge-info">AGENDADO</span>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+              <p class="text-center">Não há itens agendados</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card card-plain">
+          <div class="card-header">
+            <h4 class="card-title"> Publicados</h4>
+            <p class="category"> Itens disponíveis no feed</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              {% if videos_publicados %}
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Feed
+                  </th>
+                  <th>
+                    Título
+                  </th>
+                  <th>
+                    Categoria
+                  </th>
+                  <th>
+                    Publicação
+                  </th>
+                  <th>
+                    Status
+                  </th>
+                </thead>
+                <tbody>
+                {% for video in videos_publicados %}
+                  <tr class="clicable-row" onclick="window.location='{% url 'video_view' video.pk %}';">
+                    <td>{{ video.feed }}</td>
+                    <td>{{ video.title }}</td>
+                    <td>{{ video.categories.last }}</td>
+                    <td>{{ video.published }}</td>
+                    <td>
+                      <span class="badge badge-pill badge-success">PUBLICADO</span>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+              <p class="text-center">Não há itens publicados</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

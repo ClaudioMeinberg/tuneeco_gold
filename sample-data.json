@@ -1,0 +1,52 @@
+[
+    {
+        "model": "terra.feed",
+        "pk": "9f9997ca-9efc-46c2-8871-2bf672f5a081",
+        "fields": {
+            "created_at": "2020-09-28T09:54:49.327Z",
+            "modified_at": "2020-09-28T10:27:29.705Z",
+            "title": "Feed Title",
+            "link": "https://SITE_URL",
+            "description": "FEED DESCRIPTION.",
+            "slug": "URL_SLUG",
+            "size": 50,
+            "video_uri": "https://CDN_URI",
+            "thumbnail_uri": "CDN_URI"
+        }
+    },
+    {
+        "model": "terra.videocategory",
+        "pk": "16d59aa7-74c3-40d6-ac68-2d8f0f5a4451",
+        "fields": {
+            "created_at": "2020-09-28T09:55:29.936Z",
+            "modified_at": "2020-09-28T09:55:29.936Z",
+            "name": "Sample Category",
+            "description": "Sample Category Description"
+        }
+    },
+    {
+        "model": "terra.video",
+        "pk": "013c8ab0-d46a-4ee7-9341-fafb4b2d305e",
+        "fields": {
+            "created_at": "2020-12-17T20:38:46.937Z",
+            "modified_at": "2021-01-04T18:30:04.801Z",
+            "feed": "9f9997ca-9efc-46c2-8871-2bf672f5a081",
+            "title": "ARTICLE TITLE",
+            "description": "ARTICLE DESCRIPTION",
+            "content": "ARTICLE CONTENT",
+            "article_link": "https://ARTICLE_LINK",
+            "url_youtube_video": "https://youtu.be/ARTICLE",
+            "url_youtube_thumb": "https://ARTICLE",
+            "published": "2021-01-04T13:00:00Z",
+            "url_feed_video": "ARTICLE.mp4",
+            "url_feed_thumb": "ARTICLE.jpg",
+            "video_file_type": "video/mp4",
+            "video_duration": 0,
+            "processed": true,
+            "status": "APROVADO",
+            "categories": [
+                "16d59aa7-74c3-40d6-ac68-2d8f0f5a4451"
+            ]
+        }
+    }
+]

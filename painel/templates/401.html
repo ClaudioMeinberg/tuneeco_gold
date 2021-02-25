@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} tuneeco Gold {% endblock %}
+{% block page-title %}Não Autorizado{% endblock %}
+{% block panel-header %}Não Autorizado{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Acesso restrito</h4>
+      </div>
+      <div class="card-body">
+        <p>A página que você está tentando acessar requer permissões específicas.</p>
+        <p>Solicite seu acesso pelo <strong>slack</strong> ou envie um email para <strong>claudio.meinberg@gold360.com.br</strong></p>
+        <p>Permissão: {{ request.GET.next }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

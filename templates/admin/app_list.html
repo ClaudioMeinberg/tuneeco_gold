@@ -1,0 +1,19 @@
+{% load i18n %}
+
+{% if app_list %}
+  {% for app in app_list %}
+
+    {% for model in app.models %}
+      <li class="{% if model.admin_url in request.path %}active{% endif %}">
+        <a href="{{ model.admin_url }}">
+          <i class="now-ui-icons education_atom"></i>
+          <p>{{ model.name }}</p>
+        </a>
+      </li>
+
+    {% endfor %}
+
+  {% endfor %}
+{% else %}
+  <p>{% translate 'You don’t have permission to view or edit anything.' %}</p>
+{% endif %}

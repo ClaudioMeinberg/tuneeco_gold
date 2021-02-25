@@ -1,0 +1,19 @@
+<!-- templates/login.html -->
+{% extends 'login/base_login.html' %}
+{% load static %}
+{% block head %}
+<style type="text/css"></style>
+{% endblock %}
+
+{% block title %}
+<img src="{% static 'img/logo-gold-branco-vermelho.png' %}" alt="Gold360"><br><br><br>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto social-container my-2 order-md-1">
+        <div class="text-center social-btn">
+            <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.GET.next }}" class="btn btn-danger "><i class="fa fa-google"></i> Entrar com <b>Google</b>&nbsp;&nbsp;</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

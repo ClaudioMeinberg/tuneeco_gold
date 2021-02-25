@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block title %} tuneeco Gold {% endblock %}
+{% block page-title %}Feed de Vídeos - Terra{% endblock %}
+{% block panel-header %}Feed de Vídeos - Terra{% endblock %}
+{% block content %}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+
+            <!-- <h4 class="card-title">Produção</h4> -->
+
+          </div>
+          <div class="card-body">
+
+              <div class="form-group">
+                <label class="col-12 control-label">Título</label>
+                <div class="col-12">
+                  {{ video.title }}
+                  <hr>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-12 control-label">Descrição</label>
+                <div class="col-12">
+                  {{ video.description }}
+                  <hr>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-12 control-label">Artigo</label>
+                <div class="row justify-content-md-center">
+                  <div class="col-md-8">
+                    {{ video.content | safe}}
+
+                  </div>
+                </div>
+                <hr>
+              </div>
+
+
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-6">
+                    <label class="col-12 control-label">Link do vídeo no YouTube</label>
+                    <div class="col-12">
+                      {{ video.url_youtube_video }}  &nbsp;<a href="{{ video.url_youtube_video }}" target="_blank"><i class="fa fa-external-link-alt"></i></a>
+                      <hr>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <label class="col-12 control-label">Link para o artigo</label>
+                    <div class="col-12">
+                      {{ video.article_link }}  &nbsp;<a href="{{ video.article_link }}" target="_blank"><i class="fa fa-external-link-alt"></i></a>
+                      <hr>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label class="col-12 control-label">Categoria</label>
+                      <div class="col-12">
+                        {{ video.categories.last }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <label class="col-12 control-label">Data e hora de Publicação</label>
+                    <div class="col-12">
+                      {{ video.published }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+{% endblock %}
+{% block page-footer %}
+<!-- Tempus Dominus Bootstrap 4 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" integrity="sha256-XPTBwC3SBoWHSmKasAk01c08M6sIA5gF5+sRxqak2Qs=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js" integrity="sha256-z0oKYg6xiLq3yJGsp/LsY9XykbweQlHl42jHv2XTBz4=" crossorigin="anonymous"></script>
+
+{% endblock %}

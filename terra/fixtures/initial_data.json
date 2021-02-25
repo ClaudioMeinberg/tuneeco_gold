@@ -1,0 +1,54 @@
+[
+    {
+        "model": "terra.feed",
+        "pk": "e9e48d05-86af-4f3e-84ed-efd5acd58ba1",
+        "fields": {
+            "created_at": "2020-09-27T06:35:14.190Z",
+            "modified_at": "2020-09-27T06:35:14.190Z",
+            "title": "Marcio Atalla",
+            "link": "https://marcioatalla.com.br",
+            "description": "Atividade física, saude, bem estar e nutrição.",
+            "slug": "marcioatalla"
+        }
+    },
+    {
+        "model": "terra.videocategory",
+        "pk": "0c22949b-5abb-46ae-a3f2-3f40d69fee9c",
+        "fields": {
+            "created_at": "2020-09-27T06:36:21.582Z",
+            "modified_at": "2020-09-27T06:36:21.582Z",
+            "name": "Saúde",
+            "description": "Sempre relacionando os benefícios da atividade física na saúde. Dependendo do tema, apoiamos o conteúdo sempre com algum médico especialista"
+        }
+    },
+    {
+        "model": "terra.videocategory",
+        "pk": "62816889-d9e4-4dae-afe5-b9d04fdcfe45",
+        "fields": {
+            "created_at": "2020-09-27T06:36:07.802Z",
+            "modified_at": "2020-09-27T06:36:07.802Z",
+            "name": "Nutrição",
+            "description": "Nestes casos ele prefere sempre estar com algum nutricionista"
+        }
+    },
+    {
+        "model": "terra.videocategory",
+        "pk": "67ace6ad-7376-40b5-8192-648e6b744b71",
+        "fields": {
+            "created_at": "2020-09-27T06:35:39.200Z",
+            "modified_at": "2020-09-27T06:35:39.200Z",
+            "name": "Atividade Física",
+            "description": "Atividade Física"
+        }
+    },
+    {
+        "model": "terra.videocategory",
+        "pk": "f2cefeb3-140d-4ae4-bd27-14449c12c1aa",
+        "fields": {
+            "created_at": "2020-09-27T06:35:49.552Z",
+            "modified_at": "2020-09-27T06:36:36.815Z",
+            "name": "Bem-estar",
+            "description": "Assunto principal"
+        }
+    }
+]

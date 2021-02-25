@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% block title %} tuneeco Gold {% endblock %}
+{% block page-title %}Feed de Vídeos - Terra{% endblock %}
+{% block panel-header %}Feed de Vídeos - Terra{% endblock %}
+{% block content %}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+
+            <h4 class="card-title"> {% if 'add' in request.path %}Nova{% else %}Editar{% endif %} Produção</h4>
+
+          </div>
+          <div class="card-body">
+
+
+            <form class="form-horizontal style-form" method="post" name="form">
+              {% csrf_token %}
+
+
+
+              <span class=" text-danger">{{ form.non_field_errors }}</span>
+
+              <div class="form-group">
+                <label class="col-sm-12 control-label" for="{{ form.feed.id_for_label }}">{{ form.feed.label }}</label>
+                <div class="col-sm-12">
+                  {{ form.feed }}
+                  <span class="text-danger">{{ form.feed.errors }}</span>
+                  <span class="help-block"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-12 control-label" for="{{ form.title.id_for_label }}">Título</label>
+                <div class="col-sm-12">
+                  {{ form.title }}
+                  <span class="text-danger">{{ form.title.errors }}</span>
+                  <span class="help-block"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-12 control-label" for="{{ form.description.id_for_label }}">Descrição</label>
+                <div class="col-sm-12">
+                  {{ form.description }}
+                  <span class="text-danger">{{ form.description.errors }}</span>
+                  <span class="help-block"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-12 control-label" for="{{ form.content.id_for_label }}">Artigo</label>
+                <div class="col-sm-12">
+                  {{ form.media }}
+                  {{ form.content }}
+                  <span class="text-danger">{{ form.content.errors }}</span>
+                  <span class="help-block"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-12 control-label" for="{{ form.article_link.id_for_label }}">Link para o artigo</label>
+                <div class="col-sm-12">
+                  {{ form.article_link }}
+                  <span class="text-danger">{{ form.article_link.errors }}</span>
+                  <span class="help-block"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-12 control-label" for="{{ form.url_youtube_video.id_for_label }}">Link do vídeo no YouTube</label>
+                <div class="col-sm-12">
+                  {{ form.url_youtube_video }}
+                  <span class="text-danger">{{ form.url_youtube_video.errors }}</span>
+                  <span class="help-block"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label class="col-sm-12 control-label" for="{{ form.categories.id_for_label }}">Categoria</label>
+                      <div class="col-sm-12">
+                        {{ form.categories }}
+                        <span class="text-danger">{{ form.categories.errors }}</span>
+                        <span class="help-block"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <label class="col-sm-12 control-label" for="{{ form.published.id_for_label }}">Data e hora de Publicação</label>
+                    <div class="col-sm-12">
+
+                      <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                        {{ form.published }}
+                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                      </div>
+                      <span class="text-danger">{{ form.published.errors }}</span>
+                      <span class="help-block"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="border-top">
+                {{ form.status.as_hidden }}
+
+                <a href="#" onclick="action('IDEIA');" class="btn btn-primary">{% if 'add' in request.path %}Salvar como Idéia{% else %}Atualizar Idéia{% endif %}</a>
+                <a href="#" onclick="action('PRODUCAO');" class="btn btn-warning">Em Produção</a>
+                <a href="#" onclick="action('REVISAO');" class="btn btn-danger">Enviar para Revisão</a>
+                <a href="#" onclick="action('APROVADO');" class="btn btn-">Aprovar</a>
+
+              </div><!-- form-pane -->
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+{% endblock %}
+{% block page-footer %}
+<!-- Tempus Dominus Bootstrap 4 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" integrity="sha256-XPTBwC3SBoWHSmKasAk01c08M6sIA5gF5+sRxqak2Qs=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js" integrity="sha256-z0oKYg6xiLq3yJGsp/LsY9XykbweQlHl42jHv2XTBz4=" crossorigin="anonymous"></script>
+
+<script>
+  $(function () {
+    $("#datetimepicker1").datetimepicker({
+      format: 'DD/MM/YYYY HH:mm',
+    });
+  });
+
+  function action(action){
+    document.getElementById('id_status').value = action;
+    document.form.submit();
+  }
+</script>
+{% endblock %}
